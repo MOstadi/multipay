@@ -32,6 +32,14 @@ return [
             'payButton' => 'پرداخت موفق',
             'cancelButton' => 'پرداخت ناموفق',
         ],
+        'gooyapay' => [
+            'apiPurchaseUrl' => 'https://gooyapay.ir/webservice/rest/PaymentRequest',
+            'apiVerificationUrl' => 'https://gooyapay.ir/webservice/rest/PaymentVerification',
+            'apiPaymentUrl' => 'https://gooyapay.ir/startPay/',
+            'merchantId' => 'XXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXXXXXX',
+            'callbackUrl' => 'http://yoursite.com/path/to',
+            'currency' => 'T', //Can be R, T (Rial, Toman)
+        ],
         'fanavacard' => [
             'baseUri' => 'https://fcp.shaparak.ir',
             'apiPaymentUrl' => '_ipgw_//payment/',
@@ -75,9 +83,7 @@ return [
             'cumulativeDynamicPayStatus' => false,
         ],
         'digipay' => [
-            'apiOauthUrl' => 'https://api.mydigipay.com/digipay/api/oauth/token',
-            'apiPurchaseUrl' => 'https://api.mydigipay.info/digipay/api/tickets/business',
-            'apiVerificationUrl' => 'https://api.mydigipay.com/digipay/api/purchases/verify/',
+            'apiPaymentUrl' => 'https://api.mydigipay.com', // with out '/' at the end
             'username' => 'username',
             'password' => 'password',
             'client_id' => '',
@@ -266,9 +272,9 @@ return [
             'currency' => 'T', //Can be R, T (Rial, Toman)
         ],
         'sepehr' => [
-            'apiGetToken' => 'https://mabna.shaparak.ir:8081/V1/PeymentApi/GetToken',
-            'apiPaymentUrl' => 'https://mabna.shaparak.ir:8080/pay',
-            'apiVerificationUrl' => 'https://mabna.shaparak.ir:8081/V1/PeymentApi/Advice',
+            'apiGetToken' => 'https://sepehr.shaparak.ir:8081/V1/PeymentApi/GetToken',
+            'apiPaymentUrl' => 'https://sepehr.shaparak.ir:8080/Pay',
+            'apiVerificationUrl' => 'https://sepehr.shaparak.ir:8081/V1/PeymentApi/Advice',
             'terminalId' => '',
             'callbackUrl' => '',
             'description' => 'payment using sepehr(saderat)',
@@ -426,6 +432,16 @@ return [
             'description' => 'payment using Minipay.',
             'currency' => 'T', //Can be R, T (Rial, Toman)
         ],
+        'snapppay' => [
+            'apiPaymentUrl' => 'https://fms-gateway-staging.apps.public.teh-1.snappcloud.io',
+            'callbackUrl' => 'http://yoursite.com/path/to',
+            'username' => 'username',
+            'password' => 'password',
+            'client_id' => '',
+            'client_secret' => '',
+            'description' => 'payment using Snapp Pay.',
+            'currency' => 'T', //Can be R, T (Rial, Toman)
+        ],
     ],
 
     /*
@@ -442,6 +458,7 @@ return [
     */
     'map' => [
         'local' => \Shetabit\Multipay\Drivers\Local\Local::class,
+        'gooyapay' => \Shetabit\Multipay\Drivers\Gooyapay\Gooyapay::class,
         'fanavacard' => \Shetabit\Multipay\Drivers\Fanavacard\Fanavacard::class,
         'asanpardakht' => \Shetabit\Multipay\Drivers\Asanpardakht\Asanpardakht::class,
         'atipay' => \Shetabit\Multipay\Drivers\Atipay\Atipay::class,
@@ -478,5 +495,6 @@ return [
         'toman' => \Shetabit\Multipay\Drivers\Toman\Toman::class,
         'bitpay' => \Shetabit\Multipay\Drivers\Bitpay\Bitpay::class,
         'minipay' => \Shetabit\Multipay\Drivers\Minipay\Minipay::class,
+        'snapppay'=> \Shetabit\Multipay\Drivers\SnappPay\SnappPay::class,
     ]
 ];
